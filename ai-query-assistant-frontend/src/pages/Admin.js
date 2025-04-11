@@ -22,7 +22,7 @@ const Admin = () => {
   useEffect(() => {
     fetchAllQueries(); // Get all user queries
     fetchDefaultQuestions(); // Get all default Q&As
-  }, []);
+  }, );
 
   //  Fetch all user queries from the backend
   const fetchAllQueries = async () => {

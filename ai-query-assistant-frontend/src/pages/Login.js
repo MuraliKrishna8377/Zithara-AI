@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +17,7 @@ function Login() {
         Password,
       });
 
-      const { token, user } = res.data;
-      const role = user.Role;
+      const { token, role } = res.data; // ✅ Fixed role extraction
       localStorage.setItem('token', token);
       localStorage.setItem('role', role);
 
@@ -37,9 +35,9 @@ function Login() {
     <div className="bg-animated">
       <style>
         {`
-        /* Page Background */
+        /* 🟦 Page Background */
         .bg-animated {
-          background-color:rgb(11, 121, 230); 
+          background-color: rgb(11, 121, 230); /* 🔁 Change this for theme */
           height: 100vh;
           display: flex;
           justify-content: center;
@@ -48,7 +46,7 @@ function Login() {
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Top Corner logo */
+        /* 🧠 Top Corner Branding */
         .corner-logo {
           position: absolute;
           top: 20px;
@@ -68,9 +66,9 @@ function Login() {
           opacity: 0.7;
         }
 
-        /* Login Box Styling  */
+        /* 🪟 Login Box Styling */
         .login-box {
-          background: #fff;
+          background: #fff; /* 🎨 Box background color */
           padding: 40px;
           border-radius: 20px;
           box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
@@ -98,7 +96,7 @@ function Login() {
         .login-button {
           width: 100%;
           padding: 12px;
-          background-color: #6a11cb;
+          background-color: #6a11cb; /* 🔁 Use #28a745 for green */
           color: white;
           border: none;
           border-radius: 10px;
@@ -120,13 +118,13 @@ function Login() {
         `}
       </style>
 
-      {/* zithara Company Name and Tagline */}
+      {/* 🌟 Branding */}
       <div className="corner-logo">
         <h1>Zithara.AI</h1>
         <p>AI-Powered Customer Assistant</p>
       </div>
 
-      {/*  Login Box */}
+      {/* 🛠️ Login Box */}
       <div className="login-box">
         <h2 className="welcome-text">Welcome Back</h2>
         <form onSubmit={handleSubmit}>
@@ -151,7 +149,7 @@ function Login() {
           </button>
         </form>
 
-        {/* Register Button */}
+        {/* 🧾 Register Link */}
         <p style={{ marginTop: '1rem', textAlign: 'center' }}>
           Don’t have an account?{' '}
           <a href="/register" style={{ color: '#6a11cb', textDecoration: 'none' }}>
@@ -159,9 +157,11 @@ function Login() {
           </a>
         </p>
 
+        {/* ❗ Error Message */}
         {error && <p className="error-message">{error}</p>}
       </div>
     </div>
   );
 }
+
 export default Login;
