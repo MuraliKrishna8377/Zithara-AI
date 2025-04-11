@@ -27,7 +27,7 @@ const Admin = () => {
   //  Fetch all user queries from the backend
   const fetchAllQueries = async () => {
     try {
-      const res = await axios.get('${process.env.REACT_APP_BACKEND_URL}/api/queries/all', {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/queries/all`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setQueries(res.data.queries); // Update state with fetched queries
@@ -39,7 +39,7 @@ const Admin = () => {
   //  Fetch default questions and answers from the backend
   const fetchDefaultQuestions = async () => {
     try {
-      const res = await axios.get('${process.env.REACT_APP_BACKEND_URL}/api/admin/defaults', {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/defaults`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDefaultQuestions(res.data.defaults); // Update state with default Q&As
@@ -53,7 +53,7 @@ const Admin = () => {
     e.preventDefault(); // Prevent page refresh
     try {
       await axios.post(
-        '${process.env.REACT_APP_BACKEND_URL}/api/admin/defaults',
+        `${process.env.REACT_APP_BACKEND_URL}/api/admin/defaults`,
         { question: defaultQuestion, answer: defaultAnswer },
         { headers: { Authorization: `Bearer ${token}` } }
       );

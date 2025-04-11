@@ -16,7 +16,7 @@ const OrderStatusPage = () => {
 
   //  Fetch orders from the backend API
   const fetchOrders = async () => {
-    const res = await axios.get('${process.env.REACT_APP_BACKEND_URL}/api/admin/orders', {
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/orders`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     setOrders(res.data.orders); // Update state with the fetched orders
@@ -25,7 +25,7 @@ const OrderStatusPage = () => {
   // Add a new order with ID and status
   const handleAdd = async () => {
     await axios.post(
-      '${process.env.REACT_APP_BACKEND_URL}/api/admin/orders',
+      `${process.env.REACT_APP_BACKEND_URL}/api/admin/orders`,
       {
         orderId: `#${orderId.toUpperCase()}`, // Format ID with # and uppercase
         status,
