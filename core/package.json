@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "cohere-ai": "^7.16.0",
     "core": "file:",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
