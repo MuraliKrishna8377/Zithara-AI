@@ -32,7 +32,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/queries/history', {
+        const res = await axios.get('${process.env.REACT_APP_BACKEND_URL}/api/queries/history', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setHistory(res.data.queries);
@@ -43,7 +43,7 @@ const Dashboard = () => {
 
     const fetchDefaults = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/admin/defaults', {
+        const res = await axios.get('${process.env.REACT_APP_BACKEND_URL}/api/admin/defaults', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setDefaultQuestions(res.data.defaults);
@@ -71,7 +71,7 @@ const Dashboard = () => {
       setAnswer(matchedDefault.answer);
       try {
         const res = await axios.post(
-          'http://localhost:5000/api/queries',
+          '${process.env.REACT_APP_BACKEND_URL}/api/queries',
           {
             question: matchedDefault.question,
             answer: matchedDefault.answer,
@@ -89,7 +89,7 @@ const Dashboard = () => {
       // Otherwise, send query to backend AI
       try {
         const res = await axios.post(
-          'http://localhost:5000/api/queries',
+          '${process.env.REACT_APP_BACKEND_URL}/api/queries',
           { question: query },
           {
             headers: { Authorization: `Bearer ${token}` },

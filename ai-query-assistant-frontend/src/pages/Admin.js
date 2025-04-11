@@ -27,7 +27,7 @@ const Admin = () => {
   //  Fetch all user queries from the backend
   const fetchAllQueries = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/queries/all', {
+      const res = await axios.get('${process.env.REACT_APP_BACKEND_URL}/api/queries/all', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setQueries(res.data.queries); // Update state with fetched queries
@@ -39,7 +39,7 @@ const Admin = () => {
   //  Fetch default questions and answers from the backend
   const fetchDefaultQuestions = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/admin/defaults', {
+      const res = await axios.get('${process.env.REACT_APP_BACKEND_URL}/api/admin/defaults', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDefaultQuestions(res.data.defaults); // Update state with default Q&As
@@ -53,7 +53,7 @@ const Admin = () => {
     e.preventDefault(); // Prevent page refresh
     try {
       await axios.post(
-        'http://localhost:5000/api/admin/defaults',
+        '${process.env.REACT_APP_BACKEND_URL}/api/admin/defaults',
         { question: defaultQuestion, answer: defaultAnswer },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -70,7 +70,7 @@ const Admin = () => {
   const handleDeleteDefault = async (id) => {
     if (!window.confirm('Are you sure you want to delete this default question?')) return; // Ask for confirmation
     try {
-      await axios.delete(`http://localhost:5000/api/admin/defaults/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/admin/defaults/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDefaultQuestions((prev) => prev.filter((item) => item._id !== id)); // Remove from state
@@ -83,7 +83,7 @@ const Admin = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this query?')) return; // Ask for confirmation
     try {
-      await axios.delete(`http://localhost:5000/api/queries/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/queries/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setQueries((prev) => prev.filter((q) => q._id !== id)); // Remove from state
@@ -103,7 +103,7 @@ const Admin = () => {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/queries/${editId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/queries/${editId}`,
         {
           question: editQuestion,
           answer: editAnswer,
